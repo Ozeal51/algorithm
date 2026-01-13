@@ -1,13 +1,30 @@
-ALGORITHM three_nb_add
-VAR
-num1, num2, num3 : INTEGER;
-sum: INTEGER:=0;
-    set_declarations
-BEGIN
-read (num1)
-read (num2)
-read (num3)
-sum:= num1+num2+num3;
-    set_instructions
-    write (sum)
-END
+Start
+
+    length ← 0
+    words  ← 1
+    vowels ← 0
+
+    Read ch      // read first character
+
+    WHILE ch ≠ '.'
+
+        length ← length + 1
+
+        IF ch = ' ' THEN
+            words ← words + 1
+        ENDIF
+
+        IF ch = 'a' OR ch = 'e' OR ch = 'i' OR ch = 'o' OR ch = 'u'
+           OR ch = 'A' OR ch = 'E' OR ch = 'I' OR ch = 'O' OR ch = 'U' THEN
+            vowels ← vowels + 1
+        ENDIF
+
+        Read next ch
+
+    ENDWHILE
+
+    Output "Length of sentence = ", length
+    Output "Number of words = ", words
+    Output "Number of vowels = ", vowels
+
+End
