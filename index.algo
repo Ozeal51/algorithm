@@ -1,31 +1,74 @@
-ALGORITHM  GoMyCode checkpoint
-VAR
-    sentence: STRING
-    los, now, nov: INTEGER
-    counter: INTEGER:=0
-BEGIN
-    Read(sentence)
-    WHILE (sentence {counter} <> '.' ) DO
-        IF (sentence [counter] = ' ') THEN
-        now:=now+1
-    END_IF
-    IF (sentence [counter]='a')
-        counter:=counter+1
-    END_WHILE
+Algorithm Distinct_Sum(A, B)
+    Initialize sum ← 0
 
+    // Step 1: Add elements from A not found in B
+    For i ← 1 to length(A)
+        found ← false
+        For j ← 1 to length(B)
+            If A[i] = B[j] then
+                found ← true
+            EndIf
+        EndFor
+        If found = false then
+            sum ← sum + A[i]
+        EndIf
+    EndFor
 
-        
-        counter:=counter+1
-    END_WHILE
-    los:=counter +1
-    now:=now+1
-    write(los)
-    write(now)
+    // Step 2: Add elements from B not found in A
+    For i ← 1 to length(B)
+        found ← false
+        For j ← 1 to length(A)
+            If B[i] = A[j] then
+                found ← true
+            EndIf
+        EndFor
+        If found = false then
+            sum ← sum + B[i]
+        EndIf
+    EndFor
 
+    Output sum
+EndAlgorithm
 
-END
+// Porcedure t compute dot //
+Procedure dot_product(v1, v2, ps)
+    ps ← 0
+    For i ← 1 to length(v1)
+        ps ← ps + (v1[i] * v2[i])
+    EndFor
+EndProcedure
 
+// Determine Orthogonality of n Vector Pairs//
 
-"hello world."
+    Input n
+    For k ← 1 to n
+        Input vector v1
+        Input vector v2
 
-I am a long word 
+        Call dot_product(v1, v2, ps)
+
+        If ps = 0 then
+            Output "Vectors are orthogonal"
+        Else
+            Output "Vectors are NOT orthogonal"
+        EndIf
+    EndFor
+EndAlgorithm
+
+// Algorithm using fnctiion//
+Algorithm Check_Orthogonality_Function
+    Input n
+
+    For k ← 1 to n
+        Input vector v1
+        Input vector v2
+
+        ps ← dot_product(v1, v2)
+
+        If ps = 0 then
+            Output "Vectors are orthogonal"
+        Else
+            Output "Vectors are NOT orthogonal"
+        EndIf
+    EndFor
+EndAlgorithm
