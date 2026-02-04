@@ -1,74 +1,61 @@
-Algorithm Distinct_Sum(A, B)
-    Initialize sum ← 0
+function analyzeSentence() {
+    // Initialize three counters
+    let charCount = 0;
+    let wordCount = 0;
+    let vowelCount = 0;
+    
+    // Define vowels
+    const vowels = "aeiouAEIOU";
+    
+    // Flag to track if we're in a word
+    let inWord = false;
+    
+    // Read the sentence
+    const sentence = prompt("Enter a sentence ending with a period:");
+    
+    // Process each character separately
+    for (let i = 0; i < sentence.length; i++) {
+        const char = sentence[i];
+        
+        // Increment character counter
+        charCount++;
+        
+        // Check if we've reached the period (end of sentence)
+        if (char === '.') {
+            // If we were in a word, count it
+            if (inWord) {
+                wordCount++;
+            }
+            break;
+        }
+        
+        // Check if character is a vowel
+        if (vowels.includes(char)) {
+            vowelCount++;
+        }
+        
+        // Count words (separated by single space)
+        if (char === ' ') {
+            if (inWord) {
+                wordCount++;
+                inWord = false;
+            }
+        } else {
+            inWord = true;
+        }
+    }
+    
+    // Display results
+    console.log(`Sentence length: ${charCount} characters`);
+    console.log(`Number of words: ${wordCount}`);
+    console.log(`Number of vowels: ${vowelCount}`);
+    
+    // Alternative: display with alert
+    alert(`Results:\n` +
+          `Sentence length: ${charCount} characters\n` +
+          `Number of words: ${wordCount}\n` +
+          `Number of vowels: ${vowelCount}`);
+}
 
-    // Step 1: Add elements from A not found in B
-    For i ← 1 to length(A)
-        found ← false
-        For j ← 1 to length(B)
-            If A[i] = B[j] then
-                found ← true
-            EndIf
-        EndFor
-        If found = false then
-            sum ← sum + A[i]
-        EndIf
-    EndFor
-
-    // Step 2: Add elements from B not found in A
-    For i ← 1 to length(B)
-        found ← false
-        For j ← 1 to length(A)
-            If B[i] = A[j] then
-                found ← true
-            EndIf
-        EndFor
-        If found = false then
-            sum ← sum + B[i]
-        EndIf
-    EndFor
-
-    Output sum
-EndAlgorithm
-
-// Porcedure t compute dot //
-Procedure dot_product(v1, v2, ps)
-    ps ← 0
-    For i ← 1 to length(v1)
-        ps ← ps + (v1[i] * v2[i])
-    EndFor
-EndProcedure
-
-// Determine Orthogonality of n Vector Pairs//
-
-    Input n
-    For k ← 1 to n
-        Input vector v1
-        Input vector v2
-
-        Call dot_product(v1, v2, ps)
-
-        If ps = 0 then
-            Output "Vectors are orthogonal"
-        Else
-            Output "Vectors are NOT orthogonal"
-        EndIf
-    EndFor
-EndAlgorithm
-
-// Algorithm using fnctiion//
-Algorithm Check_Orthogonality_Function
-    Input n
-
-    For k ← 1 to n
-        Input vector v1
-        Input vector v2
-
-        ps ← dot_product(v1, v2)
-
-        If ps = 0 then
-            Output "Vectors are orthogonal"
-        Else
-            Output "Vectors are NOT orthogonal"
-        EndIf
-    EndFor
-EndAlgorithm
+// Run the algorithm
+analyzeSentence();
